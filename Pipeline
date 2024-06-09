@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+    stages{
+        stage("clone"){
+            steps{
+            git url: "https://github.com/KambleSahil3/django-todo-cicd.git",
+            branch: "compose"
+            }
+        }
+        stage("build"){
+            steps{
+                sh 'docker build . -t node-app'
+            }
+        }
+    }
+}
